@@ -1,0 +1,135 @@
+body {
+  background: rgb(255, 246, 231);
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Slab", serif;
+}
+
+.dd-vc {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.dd-transition {
+  transition: all 0.3s ease;
+}
+.dd-shadow {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.dd-banner {
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(9, 30, 66, 0.25);
+}
+
+.delete {
+  cursor: pointer;
+  color: red;
+}
+
+.delete:hover {
+  text-decoration: underline;
+}
+
+#dragDrop {
+  width: 70%;
+  margin: 20px auto 0;
+  position: relative;
+}
+
+.dd-slot {
+  float: left;
+  outline-offset: -15px;
+  position: relative;
+  pointer-events: none;
+  border-radius: 10%;
+}
+.outline-show {
+  outline: 2px solid rgba(54, 86, 132, 0.75);
+}
+.dd-slot-num {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.1);
+  font-size: 40px;
+  position: absolute;
+  width: 100%;
+}
+
+.dd-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor: pointer;
+}
+.dd-item.dd-disabled {
+  pointer-events: none;
+  opacity: 0;
+}
+.dd-item.dd-selected {
+  z-index: 20;
+}
+.dd-item-inner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 5%;
+  box-sizing: border-box;
+}
+.dd-selector-inner {
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+.dd-selected-inner {
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+.dd-item-inner:hover .dd-selector-inner {
+  transform: scale(1);
+}
+.dd-item-panel {
+  width: 80%;
+  height: 35px;
+  background: #fff;
+  position: absolute;
+  left: 10%;
+  bottom: -15px;
+  z-index: 5;
+}
+.dd-item-title {
+  font-size: 15px;
+  color: #365684;
+  text-align: center;
+  line-height: 35px;
+}
