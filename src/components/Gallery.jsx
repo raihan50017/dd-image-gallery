@@ -26,27 +26,6 @@ function Gallery() {
   const dragDrop = useRef(null);
   const main = useRef(null);
 
-  //Select item for delete
-  const handleSelect = (imageId) => {
-    const objIndex = imageLibrary.findIndex((obj) => obj.id == imageId);
-    const newIds = selectedItems.ids;
-    if (imageLibrary[objIndex]?.selected) {
-      imageLibrary[objIndex].selected = false;
-      newIds.splice(imageId, 1);
-      setSelectedItems({
-        count: selectedItems.count - 1,
-        ids: newIds,
-      });
-    } else {
-      imageLibrary[objIndex].selected = true;
-      newIds.push(imageId);
-      setSelectedItems({
-        count: selectedItems.count + 1,
-        ids: newIds,
-      });
-    }
-  };
-
   //Image library setup
   const [imageLibrary, setImageLibrary] = useState([
     { id: 23, image: "image-1.webp", selected: false },
@@ -80,6 +59,29 @@ function Gallery() {
     setWrapperLeft(dragDrop.current.offsetLeft);
     setWrapperTop(dragDrop.current.offsetTop);
   }, [ddSlot, dragDrop, main, deviceWidth]);
+
+  //Select item for delete
+  const handleSelect = (imageId) => {
+    const objIndex = imageLibrary.findIndex((obj) => obj.id == imageId);
+    if (imageLibrary[objIndex]?.selected) {
+      imageLibrary[objIndex].selected = false;
+      const newIds = selectedItems.ids.filter(function (id) {
+        return id != imageId;
+      });
+      setSelectedItems({
+        count: selectedItems.count - 1,
+        ids: newIds,
+      });
+    } else {
+      imageLibrary[objIndex].selected = true;
+      const newIds = selectedItems.ids;
+      newIds.push(imageId);
+      setSelectedItems({
+        count: selectedItems.count + 1,
+        ids: newIds,
+      });
+    }
+  };
 
   const handleDelete = () => {
     const newList = listedImageIds.lists.filter(function (id) {
