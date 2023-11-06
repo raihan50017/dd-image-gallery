@@ -47,7 +47,6 @@ function Gallery() {
   });
 
   useEffect(() => {
-    console.ignoredYellowBox = ["Warning:"];
     setDeviceWidth(main.current.offsetWidth);
     if (main.current.offsetWidth <= 991 && main.current.offsetWidth >= 768) {
       setNumOfImagesPerRow(4);
@@ -333,8 +332,6 @@ function Gallery() {
 
         arrangeItems();
       }
-
-      console.log(clickX - resultX, itemWidth);
 
       if (clickX - resultX > itemWidth) {
         resultX = clickX - itemWidth + itemWidth / 2;
